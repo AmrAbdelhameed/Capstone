@@ -5,4 +5,7 @@
     <string name="rating">Rating</string>
     <string name="date">Date</string>
     <string name="make_as_favourite">Make As Favourite</string>
+    <string name="appwidget_text">Books</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.example.amr.capstone.RetrofitAPIs;
 
 import com.example.amr.capstone.Models.MainResponse;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

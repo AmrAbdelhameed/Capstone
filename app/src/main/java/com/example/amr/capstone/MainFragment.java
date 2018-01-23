@@ -72,6 +72,7 @@ public class MainFragment extends Fragment {
             noItems = 3;
 
         itemsBeans = new ArrayList<MainResponse.ItemsBean>();
+
         getMoviesGET();
 
         return fragment;
