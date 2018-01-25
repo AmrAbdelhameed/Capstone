@@ -11,21 +11,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String TableName = "FavouriteTable";
     public static final String Table_ID = "id";
-    public static final String Movie_ID = "idd";
-    public static final String Movie_Image = "imageposter";
-    public static final String Movie_Image2 = "imageback";
-    public static final String Movie_Title = "title";
-    public static final String Movie_SubTitle = "subtitle";
-    public static final String Movie_Rate = "rate";
-    public static final String Movie_Year = "year";
-    public static final String Movie_Overview = "overview";
+    public static final String Book_ID = "idd";
+    public static final String Book_Image = "imageposter";
+    public static final String Book_Image2 = "imageback";
+    public static final String Book_Title = "title";
+    public static final String Book_SubTitle = "subtitle";
+    public static final String Book_Rate = "rate";
+    public static final String Book_Year = "year";
+    public static final String Book_publisher = "publisher";
+    public static final String Book_Overview = "overview";
 
     public static final String CREATE_TABLE_Movie = "create table " + TableName +
             "( " + Table_ID + " integer primary key autoincrement ," +
-            Movie_ID + " text ," + Movie_Image + " text , " +
-            Movie_Image2 + " text ," +
-            Movie_Title + " text , " + Movie_SubTitle + " text , " + Movie_Rate + " text , " +
-            Movie_Year + " text , " + Movie_Overview + " text ) ;";
+            Book_ID + " text ," + Book_Image + " text , " +
+            Book_Image2 + " text ," +
+            Book_Title + " text , " + Book_SubTitle + " text , " + Book_Rate + " text , " +
+            Book_Year + " text , " + Book_publisher + " text , " + Book_Overview + " text ) ;";
 
     public static final int DATABASE_VERSION = 1;
     SQLiteDatabase mSQLiteDatabase;
@@ -39,17 +40,18 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_Movie);
     }
 
-    public void addMovie(String _Movie_ID, String _Movie_Image, String _Movie_Image2, String _Movie_Title, String _Movie_SubTitle, Double _Movie_Rate, String _Movie_Year, String _Movie_Overview) {
+    public void addMovie(String _Book_ID, String _Book_Image, String _Book_Image2, String _Book_Title, String _Book_SubTitle, Double _Book_Rate, String _Book_Year, String _Book_Overview, String Publisher) {
         mSQLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Movie_ID, _Movie_ID);
-        contentValues.put(Movie_Image, _Movie_Image);
-        contentValues.put(Movie_Image2, _Movie_Image2);
-        contentValues.put(Movie_Title, _Movie_Title);
-        contentValues.put(Movie_SubTitle, _Movie_SubTitle);
-        contentValues.put(Movie_Rate, _Movie_Rate);
-        contentValues.put(Movie_Year, _Movie_Year);
-        contentValues.put(Movie_Overview, _Movie_Overview);
+        contentValues.put(Book_ID, _Book_ID);
+        contentValues.put(Book_Image, _Book_Image);
+        contentValues.put(Book_Image2, _Book_Image2);
+        contentValues.put(Book_Title, _Book_Title);
+        contentValues.put(Book_SubTitle, _Book_SubTitle);
+        contentValues.put(Book_Rate, _Book_Rate);
+        contentValues.put(Book_Year, _Book_Year);
+        contentValues.put(Book_publisher, Publisher);
+        contentValues.put(Book_Overview, _Book_Overview);
         mSQLiteDatabase.insert(TableName, null, contentValues);
     }
 
@@ -61,12 +63,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor checkmovie(String s) {
         mSQLiteDatabase = getReadableDatabase();
-        Cursor cursor = mSQLiteDatabase.rawQuery("select * from " + TableName + " where " + Movie_ID + " = " + "'" + s + "'", null);
+        Cursor cursor = mSQLiteDatabase.rawQuery("select * from " + TableName + " where " + Book_ID + " = " + "'" + s + "'", null);
         return cursor;
     }
 
     public void deleterow(String ID) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.delete(TableName, Movie_ID + " = ?", new String[]{ID});
+        sqLiteDatabase.delete(TableName, Book_ID + " = ?", new String[]{ID});
     }
 }

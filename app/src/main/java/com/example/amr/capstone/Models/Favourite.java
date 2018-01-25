@@ -13,6 +13,15 @@ public class Favourite {
     private Double Rate;
     private String Year;
     private String Description;
+    private String publisher;
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 
     public String getID() {
         return ID;

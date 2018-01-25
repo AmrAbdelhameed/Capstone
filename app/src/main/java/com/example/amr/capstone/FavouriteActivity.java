@@ -26,7 +26,7 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
     }
 
     @Override
-    public void setSelectedName(String ID, String Title, String SubTitle, String Year, Double Rate, String Overview, String Image1, String Image2) {
+    public void setSelectedName(String ID, String Title, String SubTitle, String Year, Double Rate, String Overview, String Image1, String Image2, String publisher) {
 
         if (!mIsTwoPane) {
             Intent i = new Intent(this, DetailsActivity.class);
@@ -42,6 +42,7 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
             b.putString("Overview", Overview);
             b.putString("Image1", Image1);
             b.putString("Image2", Image2);
+            b.putString("publisher", publisher);
             b.putBoolean("WithDelete", false);
             i.putExtras(b);
 
@@ -61,6 +62,7 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
             b.putString("Overview", Overview);
             b.putString("Image1", Image1);
             b.putString("Image2", Image2);
+            b.putString("publisher", publisher);
             mDetailsFragment.setArguments(b);
 
             getSupportFragmentManager().beginTransaction().replace(R.id.flDetails2, mDetailsFragment, "").commit();

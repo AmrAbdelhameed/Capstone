@@ -77,8 +77,9 @@ public class MainFragment extends Fragment {
                         String Overview = itemsBeans.get(position).getVolumeInfo().getDescription();
                         String Image1 = itemsBeans.get(position).getVolumeInfo().getImageLinks().getThumbnail();
                         String Image2 = itemsBeans.get(position).getVolumeInfo().getImageLinks().getSmallThumbnail();
+                        String publisher = itemsBeans.get(position).getVolumeInfo().getPublisher();
 
-                        mListener.setSelectedName(ID, Title, SubTitle, Year, Rate, Overview, Image1, Image2);
+                        mListener.setSelectedName(ID, Title, SubTitle, Year, Rate, Overview, Image1, Image2, publisher);
                     }
 
                     @Override

@@ -21,11 +21,11 @@ import com.example.amr.capstone.RetrofitAPIs.ApiUtils;
 import com.squareup.picasso.Picasso;
 
 public class DetailsFragment extends Fragment {
-    TextView title_movie, yearView, rate, DescriptionView, makeAsFavourite;
+    TextView title_movie, yearView, rate, DescriptionView, makeAsFavourite, publisher_book;
     ImageView imageView;
     APIService mAPIService;
     Button Btn_makeAsFavourite;
-    String ID, Title, SubTitle, Year, Overview, Image1, Image2;
+    String ID, Title, SubTitle, Year, Overview, Image1, Image2, publisher;
     boolean toolbarExist, Favourite;
     Double Rate;
     DBHelper dbHelper;
@@ -49,6 +49,7 @@ public class DetailsFragment extends Fragment {
         title_movie = (TextView) detailsFragment.findViewById(R.id.title_book);
         yearView = (TextView) detailsFragment.findViewById(R.id.date_book);
         rate = (TextView) detailsFragment.findViewById(R.id.rate_book);
+        publisher_book = (TextView) detailsFragment.findViewById(R.id.publisher_book);
         DescriptionView = (TextView) detailsFragment.findViewById(R.id.description_book);
         imageView = (ImageView) detailsFragment.findViewById(R.id.Image_Poster);
 
@@ -57,6 +58,8 @@ public class DetailsFragment extends Fragment {
         ID = sentBundle.getString("ID");
         Title = sentBundle.getString("Title");
         SubTitle = sentBundle.getString("SubTitle");
+        publisher = sentBundle.getString("publisher");
+        publisher_book.setText("Publisher: " + publisher);
         toolbarExist = sentBundle.getBoolean("Toolbar");
 
         if (toolbarExist) {
@@ -114,7 +117,7 @@ public class DetailsFragment extends Fragment {
                     d.show();
                 } else {
                     if (dbHelper.checkmovie(ID).getCount() == 0) {
-                        dbHelper.addMovie(ID, Image1, Image2, Title, SubTitle, Rate, Year, Overview);
+                        dbHelper.addMovie(ID, Image1, Image2, Title, SubTitle, Rate, Year, Overview, publisher);
                         Toast.makeText(getActivity(), "Favourite Successfully", Toast.LENGTH_SHORT).show();
                         Btn_makeAsFavourite.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
                         makeAsFavourite.setText("Make As UnFavourite");

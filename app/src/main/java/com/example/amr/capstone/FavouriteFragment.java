@@ -48,8 +48,8 @@ public class FavouriteFragment extends Fragment {
 
         favouriteList = new ArrayList<Favourite>();
 
-        Uri bookUri = BookProvider.MOVIE_CONTENT_URI;
-        Cursor movieCursor = getActivity().getContentResolver().query(bookUri, new String[]{"idd", "imageposter", "imageback", "title", "subtitle", "rate", "year", "overview"}, null, null, null);
+        Uri bookUri = BookProvider.Book_CONTENT_URI;
+        Cursor movieCursor = getActivity().getContentResolver().query(bookUri, new String[]{"idd", "imageposter", "imageback", "title", "subtitle", "rate", "year", "publisher", "overview"}, null, null, null);
         while (movieCursor.moveToNext()) {
             resultsBean = new Favourite();
 
@@ -60,7 +60,8 @@ public class FavouriteFragment extends Fragment {
             String moviesubtitle = movieCursor.getString(4);
             Double movierate = movieCursor.getDouble(5);
             String movieyear = movieCursor.getString(6);
-            String mmoverview = movieCursor.getString(7);
+            String publisher = movieCursor.getString(7);
+            String mmoverview = movieCursor.getString(8);
 
             resultsBean.setID(mmid);
             resultsBean.setImage1(imagemovie1);
@@ -70,6 +71,7 @@ public class FavouriteFragment extends Fragment {
             resultsBean.setRate(movierate);
             resultsBean.setYear(movieyear);
             resultsBean.setDescription(mmoverview);
+            resultsBean.setPublisher(publisher);
 
             favouriteList.add(resultsBean);
         }
@@ -94,8 +96,9 @@ public class FavouriteFragment extends Fragment {
                         String Overview = favouriteList.get(position).getDescription();
                         String Image1 = favouriteList.get(position).getImage1();
                         String Image2 = favouriteList.get(position).getImage2();
+                        String publisher = favouriteList.get(position).getPublisher();
 
-                        mListener.setSelectedName(ID, Title, SubTitle, Year, Rate, Overview, Image1, Image2);
+                        mListener.setSelectedName(ID, Title, SubTitle, Year, Rate, Overview, Image1, Image2, publisher);
                     }
 
                     @Override

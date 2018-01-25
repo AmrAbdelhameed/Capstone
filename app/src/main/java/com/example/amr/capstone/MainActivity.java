@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
     }
 
     @Override
-    public void setSelectedName(String ID, String Title, String SubTitle, String Year, Double Rate, String Overview, String Image1, String Image2) {
+    public void setSelectedName(String ID, String Title, String SubTitle, String Year, Double Rate, String Overview, String Image1, String Image2, String publisher) {
 
         if (!mIsTwoPane) {
             Intent i = new Intent(this, DetailsActivity.class);
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
             b.putString("Overview", Overview);
             b.putString("Image1", Image1);
             b.putString("Image2", Image2);
+            b.putString("publisher", publisher);
             i.putExtras(b);
 
             startActivity(i);
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
             b.putString("Overview", Overview);
             b.putString("Image1", Image1);
             b.putString("Image2", Image2);
+            b.putString("publisher", publisher);
             mDetailsFragment.setArguments(b);
 
             getSupportFragmentManager().beginTransaction().replace(R.id.flDetails, mDetailsFragment, "").commit();
