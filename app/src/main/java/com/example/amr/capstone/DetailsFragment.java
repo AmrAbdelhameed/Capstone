@@ -100,6 +100,8 @@ public class DetailsFragment extends Fragment {
                                         Intent intent = new Intent();
                                         getActivity().setResult(Activity.RESULT_OK, intent);
                                         ((DetailsActivity) getActivity()).finish();
+                                    } else {
+                                        ((FavouriteActivity) getActivity()).finish();
                                     }
 
                                 }

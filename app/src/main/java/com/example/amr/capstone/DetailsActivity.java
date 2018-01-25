@@ -19,6 +19,7 @@ public class DetailsActivity extends AppCompatActivity {
         //Receive the sent Bundle
         Intent sentIntent = getIntent();
         Bundle sentBundle = sentIntent.getExtras();
+
         //Inflate Details Fragment & Send the Bundle to it
         DetailsFragment mDetailsFragment = new DetailsFragment();
         mDetailsFragment.setArguments(sentBundle);

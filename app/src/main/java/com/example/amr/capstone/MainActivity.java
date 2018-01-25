@@ -1,10 +1,10 @@
 package com.example.amr.capstone;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity implements TabletMood {
     boolean mIsTwoPane = false;
@@ -14,10 +14,16 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("Books");
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferencesName", Context.MODE_PRIVATE);
+        String BooksType = sharedPreferences.getString("BooksType", "");
+        setTitle(BooksType);
+
+        Intent sentIntent = getIntent();
+        Bundle sentBundle = sentIntent.getExtras();
 
         MainFragment mMainFragment = new MainFragment();
-        mMainFragment.setNameListener(this);
+        mMainFragment.setNameListener(MainActivity.this);
+        mMainFragment.setArguments(sentBundle);
         getSupportFragmentManager().beginTransaction().add(R.id.flMain, mMainFragment, "").commit();
         if (null != findViewById(R.id.flDetails)) {
             mIsTwoPane = true;

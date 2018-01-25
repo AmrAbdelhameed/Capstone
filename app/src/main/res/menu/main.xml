@@ -10,4 +10,10 @@
         app:iconTint="@color/colorTexts"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_setting"
+        android:title="@string/setting"
+        android:visible="true"
+        app:iconTint="@color/colorTexts"
+        app:showAsAction="never" />
 </menu>
