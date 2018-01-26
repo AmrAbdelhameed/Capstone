@@ -33,4 +33,12 @@
     <string name="noInternet">No Internet</string>
     <string name="favBooks">Favourite Books</string>
     <string name="updateType">Update type of books</string>
+    <string name="fav_and_unfav">Fav_And_UnFav</string>
+    <string name="dateOut">Date :</string>
+    <string name="rateOut">Rate :</string>
+    <string name="descOut">Description:</string>
+    <string name="rateTo">/5</string>
+    <string name="pubOut">Publisher:</string>
+    <string name="toolbar">Toolbar</string>
+    <string name="plzwait">Loading. Please wait...</string>
 </resources>

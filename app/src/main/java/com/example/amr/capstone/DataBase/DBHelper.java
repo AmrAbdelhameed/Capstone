@@ -43,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void addBook(String _Book_ID, String _Book_Image, String _Book_Image2, String _Book_Title, String _Book_SubTitle, Double _Book_Rate, String _Book_Year, String _Book_Overview, String Publisher) {
-        mSQLiteDatabase = getWritableDatabase();
+//        mSQLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(Book_ID, _Book_ID);
         contentValues.put(Book_Image, _Book_Image);
@@ -54,8 +54,8 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(Book_Year, _Book_Year);
         contentValues.put(Book_publisher, Publisher);
         contentValues.put(Book_Overview, _Book_Overview);
-        mSQLiteDatabase.insert(TableName, null, contentValues);
-//        context.getContentResolver().insert(BookProvider.Book_CONTENT_URI, contentValues);
+//        mSQLiteDatabase.insert(TableName, null, contentValues);
+        context.getContentResolver().insert(BookProvider.Book_CONTENT_URI, contentValues);
     }
 
     @Override

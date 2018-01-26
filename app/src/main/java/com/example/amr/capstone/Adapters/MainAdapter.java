@@ -35,10 +35,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
-        String imag = favourites.get(position).getVolumeInfo().getImageLinks().getThumbnail();
-        assert imag != null;
-        if (!imag.isEmpty())
-            Picasso.with(mContext).load(imag).into(holder.image);
+        if (favourites.get(position) != null)
+            if (favourites.get(position).getVolumeInfo() != null)
+                if (favourites.get(position).getVolumeInfo().getImageLinks() != null)
+                    if (favourites.get(position).getVolumeInfo().getImageLinks().getThumbnail() != null) {
+                        String imag = favourites.get(position).getVolumeInfo().getImageLinks().getThumbnail();
+                        if (!imag.isEmpty())
+                            Picasso.with(mContext).load(imag).into(holder.image);
+                    }
+
         holder.title.setText(favourites.get(position).getVolumeInfo().getTitle());
         holder.subtitle.setText(favourites.get(position).getVolumeInfo().getSubtitle());
     }

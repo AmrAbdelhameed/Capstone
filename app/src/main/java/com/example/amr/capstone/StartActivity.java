@@ -52,7 +52,7 @@ public class StartActivity extends AppCompatActivity {
         pdialog = new ProgressDialog(StartActivity.this);
         pdialog.setIndeterminate(true);
         pdialog.setCancelable(false);
-        pdialog.setMessage("Loading. Please wait...");
+        pdialog.setMessage(getString(R.string.plzwait));
 
         bTnSave.setOnClickListener(new View.OnClickListener() {
             @Override

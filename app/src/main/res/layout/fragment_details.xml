@@ -74,6 +74,7 @@
                     android:textSize="18sp" />
 
                 <Button
+                    android:contentDescription="@string/fav_and_unfav"
                     android:id="@+id/Btn_makeAsFavourite"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

@@ -23,26 +23,17 @@ import com.squareup.picasso.Picasso;
 public class DetailsFragment extends Fragment {
     TextView title_movie, yearView, rate, DescriptionView, makeAsFavourite, publisher_book;
     ImageView imageView;
-    APIService mAPIService;
     Button Btn_makeAsFavourite;
     String ID, Title, SubTitle, Year, Overview, Image1, Image2, publisher;
     boolean toolbarExist, Favourite;
     Double Rate;
     DBHelper dbHelper;
-    ProgressDialog pdialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View detailsFragment = inflater.inflate(R.layout.fragment_details, container, false);
 
         dbHelper = new DBHelper(getContext());
-
-        mAPIService = ApiUtils.getAPIService();
-
-        pdialog = new ProgressDialog(getActivity());
-        pdialog.setIndeterminate(true);
-        pdialog.setCancelable(false);
-        pdialog.setMessage("Loading. Please wait...");
 
         makeAsFavourite = (TextView) detailsFragment.findViewById(R.id.makeAsFavourite);
         Btn_makeAsFavourite = (Button) detailsFragment.findViewById(R.id.Btn_makeAsFavourite);
@@ -59,8 +50,8 @@ public class DetailsFragment extends Fragment {
         Title = sentBundle.getString(getString(R.string.title));
         SubTitle = sentBundle.getString(getString(R.string.subtitle));
         publisher = sentBundle.getString(getString(R.string.publisher2));
-        publisher_book.setText("Publisher: " + publisher);
-        toolbarExist = sentBundle.getBoolean("Toolbar");
+        publisher_book.setText(getString(R.string.pubOut) + publisher);
+        toolbarExist = sentBundle.getBoolean(getString(R.string.toolbar));
 
         if (toolbarExist) {
             ((DetailsActivity) getActivity()).setTitle(Title);
@@ -69,11 +60,11 @@ public class DetailsFragment extends Fragment {
             title_movie.setVisibility(View.VISIBLE);
         }
         Year = sentBundle.getString(getString(R.string.year));
-        yearView.setText("Date : " + Year);
+        yearView.setText(getString(R.string.dateOut) + Year);
         Rate = sentBundle.getDouble(getString(R.string.rate));
-        rate.setText("Rate : " + String.valueOf(Rate) + "/5");
+        rate.setText(getString(R.string.rateOut) + String.valueOf(Rate) + getString(R.string.rateTo));
         Overview = sentBundle.getString(getString(R.string.overview));
-        DescriptionView.setText("Description: " + Overview);
+        DescriptionView.setText(getString(R.string.descOut) + Overview);
         Image1 = sentBundle.getString(getString(R.string.img1));
         Image2 = sentBundle.getString(getString(R.string.img2));
 
