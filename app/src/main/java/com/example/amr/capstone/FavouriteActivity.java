@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 public class FavouriteActivity extends AppCompatActivity implements TabletMoodFavourite {
     boolean mIsTwoPane = false;
 
@@ -16,6 +18,8 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         setTitle("Favourite Books");
+
+        FirebaseCrash.log("Activity created");
 
         FavouriteFragment favouriteFragment = new FavouriteFragment();
         favouriteFragment.setNameListener(this);

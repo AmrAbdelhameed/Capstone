@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.amr.capstone.Models.MainResponse;
 import com.example.amr.capstone.RetrofitAPIs.APIService;
 import com.example.amr.capstone.RetrofitAPIs.ApiUtils;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        FirebaseCrash.log("Activity created");
 
         txtBook = findViewById(R.id.txtBook);
         bTnSave = findViewById(R.id.bTnSave);

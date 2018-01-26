@@ -11,4 +11,5 @@
     <string name="msgTextView">Enter the type of books you prefer to read for example (Time, love, ... )</string>
     <string name="setting">Settings</string>
     <string name="publisher">Publisher :</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 public class DetailsActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +17,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        FirebaseCrash.log("Activity created");
 
         //Receive the sent Bundle
         Intent sentIntent = getIntent();

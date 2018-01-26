@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.amr.capstone.Models.MainResponse;
 import com.example.amr.capstone.RetrofitAPIs.APIService;
 import com.example.amr.capstone.RetrofitAPIs.ApiUtils;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -39,6 +40,8 @@ public class SecondActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        FirebaseCrash.log("Activity created");
 
         setTitle("Update type of books");
 
