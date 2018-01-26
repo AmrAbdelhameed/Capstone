@@ -18,7 +18,7 @@ public class DetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        FirebaseCrash.log("Activity created");
+        FirebaseCrash.log(getString(R.string.activityCreated));
 
         //Receive the sent Bundle
         Intent sentIntent = getIntent();

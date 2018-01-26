@@ -41,9 +41,9 @@ public class SecondActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        FirebaseCrash.log("Activity created");
+        FirebaseCrash.log(getString(R.string.activityCreated));
 
-        setTitle("Update type of books");
+        setTitle(getString(R.string.updateType));
 
         txtBook = findViewById(R.id.txtBook);
         bTnSave = findViewById(R.id.bTnSave);
@@ -105,7 +105,7 @@ public class SecondActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MainResponse> call, Throwable t) {
-                Toast.makeText(SecondActivity.this, "No Internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SecondActivity.this, R.string.noInternet, Toast.LENGTH_SHORT).show();
                 pdialog.dismiss();
             }
         });

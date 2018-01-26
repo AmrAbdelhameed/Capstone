@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.crash.FirebaseCrash;
 
 public class MainActivity extends AppCompatActivity implements TabletMood {
     private static final String TAG = "MainActivity";
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        FirebaseCrash.log(getString(R.string.activityCreated));
 
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferencesName", Context.MODE_PRIVATE);
         String BooksType = sharedPreferences.getString("BooksType", "");

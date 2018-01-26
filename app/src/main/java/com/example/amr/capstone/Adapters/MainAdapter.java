@@ -36,6 +36,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         String imag = favourites.get(position).getVolumeInfo().getImageLinks().getThumbnail();
+        assert imag != null;
         if (!imag.isEmpty())
             Picasso.with(mContext).load(imag).into(holder.image);
         holder.title.setText(favourites.get(position).getVolumeInfo().getTitle());

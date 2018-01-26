@@ -1,5 +1,8 @@
 package com.example.amr.capstone;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.amr.capstone.Adapters.FavouriteAdapter;
 import com.example.amr.capstone.DataBase.BookProvider;
@@ -19,8 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FavouriteFragment extends Fragment {
+public class FavouriteFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static String TAG = "CursorLoader";
     Favourite resultsBean;
     RecyclerView recycler_view;
     RecyclerView.LayoutManager mLayoutManager;
@@ -29,6 +34,8 @@ public class FavouriteFragment extends Fragment {
     List<Favourite> favouriteList;
     FavouriteAdapter favouriteAdapter;
     TabletMoodFavourite mListener;
+    LoaderManager loadermanager;
+    CursorLoader cursorLoader;
 
     void setNameListener(TabletMoodFavourite TabletMoodFavourite) {
         this.mListener = TabletMoodFavourite;
@@ -48,20 +55,33 @@ public class FavouriteFragment extends Fragment {
 
         favouriteList = new ArrayList<Favourite>();
 
-        Uri bookUri = BookProvider.Book_CONTENT_URI;
-        Cursor movieCursor = getActivity().getContentResolver().query(bookUri, new String[]{"idd", "imageposter", "imageback", "title", "subtitle", "rate", "year", "publisher", "overview"}, null, null, null);
-        while (movieCursor.moveToNext()) {
+        loadermanager = getActivity().getLoaderManager();
+        loadermanager.initLoader(1, null, this);
+
+        return fragment;
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        String[] projection = {"idd", "imageposter", "imageback", "title", "subtitle", "rate", "year", "publisher", "overview"};
+        cursorLoader = new CursorLoader(getActivity(), BookProvider.Book_CONTENT_URI, projection, null, null, null);
+        return cursorLoader;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        while (cursor.moveToNext()) {
             resultsBean = new Favourite();
 
-            String mmid = movieCursor.getString(0);
-            String imagemovie1 = movieCursor.getString(1);
-            String imagemovie2 = movieCursor.getString(2);
-            String movietitle = movieCursor.getString(3);
-            String moviesubtitle = movieCursor.getString(4);
-            Double movierate = movieCursor.getDouble(5);
-            String movieyear = movieCursor.getString(6);
-            String publisher = movieCursor.getString(7);
-            String mmoverview = movieCursor.getString(8);
+            String mmid = cursor.getString(0);
+            String imagemovie1 = cursor.getString(1);
+            String imagemovie2 = cursor.getString(2);
+            String movietitle = cursor.getString(3);
+            String moviesubtitle = cursor.getString(4);
+            Double movierate = cursor.getDouble(5);
+            String movieyear = cursor.getString(6);
+            String publisher = cursor.getString(7);
+            String mmoverview = cursor.getString(8);
 
             resultsBean.setID(mmid);
             resultsBean.setImage1(imagemovie1);
@@ -75,7 +95,7 @@ public class FavouriteFragment extends Fragment {
 
             favouriteList.add(resultsBean);
         }
-        movieCursor.close();
+        cursor.close();
 
         favouriteAdapter = new FavouriteAdapter(getActivity(), favouriteList);
         mLayoutManager = new GridLayoutManager(getActivity(), noItems);
@@ -107,7 +127,10 @@ public class FavouriteFragment extends Fragment {
                     }
                 })
         );
+    }
 
-        return fragment;
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 }

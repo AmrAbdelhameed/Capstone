@@ -20,6 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Book_Year = "year";
     public static final String Book_publisher = "publisher";
     public static final String Book_Overview = "overview";
+    Context context;
 
     public static final String CREATE_TABLE_Movie = "create table " + TableName +
             "( " + Table_ID + " integer primary key autoincrement ," +
@@ -33,6 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_Movie);
     }
 
-    public void addMovie(String _Book_ID, String _Book_Image, String _Book_Image2, String _Book_Title, String _Book_SubTitle, Double _Book_Rate, String _Book_Year, String _Book_Overview, String Publisher) {
+    public void addBook(String _Book_ID, String _Book_Image, String _Book_Image2, String _Book_Title, String _Book_SubTitle, Double _Book_Rate, String _Book_Year, String _Book_Overview, String Publisher) {
         mSQLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(Book_ID, _Book_ID);
@@ -53,6 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(Book_publisher, Publisher);
         contentValues.put(Book_Overview, _Book_Overview);
         mSQLiteDatabase.insert(TableName, null, contentValues);
+//        context.getContentResolver().insert(BookProvider.Book_CONTENT_URI, contentValues);
     }
 
     @Override
@@ -63,8 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor checkmovie(String s) {
         mSQLiteDatabase = getReadableDatabase();
-        Cursor cursor = mSQLiteDatabase.rawQuery("select * from " + TableName + " where " + Book_ID + " = " + "'" + s + "'", null);
-        return cursor;
+        return mSQLiteDatabase.rawQuery("select * from " + TableName + " where " + Book_ID + " = " + "'" + s + "'", null);
     }
 
     public void deleterow(String ID) {

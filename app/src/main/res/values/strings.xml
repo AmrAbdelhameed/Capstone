@@ -12,4 +12,25 @@
     <string name="setting">Settings</string>
     <string name="publisher">Publisher :</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="makeasfav">Make As Favourite</string>
+    <string name="makeasunfav">Make As UnFavourite</string>
+    <string name="unfav_ques">UnFavourite it ?</string>
+    <string name="unfavSuccess">UnFavourite Successfully</string>
+    <string name="favSuccess">Favourite Successfully</string>
+    <string name="fav">Favourite</string>
+    <string name="id">ID</string>
+    <string name="title">Title</string>
+    <string name="subtitle">SubTitle</string>
+    <string name="publisher2">publisher</string>
+    <string name="year">Year</string>
+    <string name="rate">Rate</string>
+    <string name="overview">Overview</string>
+    <string name="img2">Image2</string>
+    <string name="img1">Image1</string>
+    <string name="msgConfirm">Are you sure</string>
+    <string name="imageposter">ImagePoster</string>
+    <string name="activityCreated">Activity created</string>
+    <string name="noInternet">No Internet</string>
+    <string name="favBooks">Favourite Books</string>
+    <string name="updateType">Update type of books</string>
 </resources>

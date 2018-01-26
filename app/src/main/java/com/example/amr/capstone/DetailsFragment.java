@@ -54,11 +54,11 @@ public class DetailsFragment extends Fragment {
         imageView = (ImageView) detailsFragment.findViewById(R.id.Image_Poster);
 
         Bundle sentBundle = getArguments();
-        Favourite = sentBundle.getBoolean("Favourite");
-        ID = sentBundle.getString("ID");
-        Title = sentBundle.getString("Title");
-        SubTitle = sentBundle.getString("SubTitle");
-        publisher = sentBundle.getString("publisher");
+        Favourite = sentBundle.getBoolean(getString(R.string.fav));
+        ID = sentBundle.getString(getString(R.string.id));
+        Title = sentBundle.getString(getString(R.string.title));
+        SubTitle = sentBundle.getString(getString(R.string.subtitle));
+        publisher = sentBundle.getString(getString(R.string.publisher2));
         publisher_book.setText("Publisher: " + publisher);
         toolbarExist = sentBundle.getBoolean("Toolbar");
 
@@ -68,23 +68,23 @@ public class DetailsFragment extends Fragment {
             title_movie.setText(Title);
             title_movie.setVisibility(View.VISIBLE);
         }
-        Year = sentBundle.getString("Year");
+        Year = sentBundle.getString(getString(R.string.year));
         yearView.setText("Date : " + Year);
-        Rate = sentBundle.getDouble("Rate");
+        Rate = sentBundle.getDouble(getString(R.string.rate));
         rate.setText("Rate : " + String.valueOf(Rate) + "/5");
-        Overview = sentBundle.getString("Overview");
+        Overview = sentBundle.getString(getString(R.string.overview));
         DescriptionView.setText("Description: " + Overview);
-        Image1 = sentBundle.getString("Image1");
-        Image2 = sentBundle.getString("Image2");
+        Image1 = sentBundle.getString(getString(R.string.img1));
+        Image2 = sentBundle.getString(getString(R.string.img2));
 
         Picasso.with(getActivity()).load(Image2).into(imageView);
 
         if (dbHelper.checkmovie(ID).getCount() == 0) {
             Btn_makeAsFavourite.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
-            makeAsFavourite.setText("Make As Favourite");
+            makeAsFavourite.setText(R.string.makeasfav);
         } else {
             Btn_makeAsFavourite.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
-            makeAsFavourite.setText("Make As UnFavourite");
+            makeAsFavourite.setText(R.string.makeasunfav);
         }
 
         Btn_makeAsFavourite.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +92,13 @@ public class DetailsFragment extends Fragment {
             public void onClick(View view) {
                 if (dbHelper.checkmovie(ID).getCount() > 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage("UnFavourite it ?")
+                    builder.setMessage(R.string.unfav_ques)
                             .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dbHelper.deleterow(ID);
-                                    Toast.makeText(getActivity(), "UnFavourite Successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), R.string.unfavSuccess, Toast.LENGTH_SHORT).show();
                                     Btn_makeAsFavourite.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
-                                    makeAsFavourite.setText("Make As Favourite");
+                                    makeAsFavourite.setText(R.string.makeasfav);
                                     if (toolbarExist) {
                                         Intent intent = new Intent();
                                         getActivity().setResult(Activity.RESULT_OK, intent);
@@ -113,14 +113,14 @@ public class DetailsFragment extends Fragment {
                         }
                     });
                     AlertDialog d = builder.create();
-                    d.setTitle("Are you sure");
+                    d.setTitle(getString(R.string.msgConfirm));
                     d.show();
                 } else {
                     if (dbHelper.checkmovie(ID).getCount() == 0) {
-                        dbHelper.addMovie(ID, Image1, Image2, Title, SubTitle, Rate, Year, Overview, publisher);
-                        Toast.makeText(getActivity(), "Favourite Successfully", Toast.LENGTH_SHORT).show();
+                        dbHelper.addBook(ID, Image1, Image2, Title, SubTitle, Rate, Year, Overview, publisher);
+                        Toast.makeText(getActivity(), R.string.favSuccess, Toast.LENGTH_SHORT).show();
                         Btn_makeAsFavourite.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
-                        makeAsFavourite.setText("Make As UnFavourite");
+                        makeAsFavourite.setText(R.string.makeasunfav);
                     }
                 }
             }

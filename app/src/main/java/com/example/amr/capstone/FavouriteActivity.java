@@ -17,9 +17,9 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        setTitle("Favourite Books");
+        setTitle(getString(R.string.favBooks));
 
-        FirebaseCrash.log("Activity created");
+        FirebaseCrash.log(getString(R.string.activityCreated));
 
         FavouriteFragment favouriteFragment = new FavouriteFragment();
         favouriteFragment.setNameListener(this);

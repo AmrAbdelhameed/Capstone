@@ -36,6 +36,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.MyVi
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         String imag = favourites.get(position).getImage1();
+        assert imag != null;
         if (!imag.isEmpty())
             Picasso.with(mContext).load(imag).into(holder.image);
         holder.title.setText(favourites.get(position).getTitle());

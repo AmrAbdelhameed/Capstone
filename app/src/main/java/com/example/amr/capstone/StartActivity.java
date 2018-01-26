@@ -38,7 +38,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        FirebaseCrash.log("Activity created");
+        FirebaseCrash.log(getString(R.string.activityCreated));
 
         txtBook = findViewById(R.id.txtBook);
         bTnSave = findViewById(R.id.bTnSave);
@@ -116,7 +116,7 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MainResponse> call, Throwable t) {
-                Toast.makeText(StartActivity.this, "No Internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StartActivity.this, R.string.noInternet, Toast.LENGTH_SHORT).show();
                 pdialog.dismiss();
             }
         });
