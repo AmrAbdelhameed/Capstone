@@ -45,4 +45,7 @@
     <string name="enter_here">Enter Here</string>
     <string name="typeFilter">books</string>
     <string name="DefaultFilter">love</string>
+    <string name="poster">ImagePoster</string>
+    <string name="book_title">Book Title</string>
+    <string name="booke_sub_title">Booke Sub Title</string>
 </resources>

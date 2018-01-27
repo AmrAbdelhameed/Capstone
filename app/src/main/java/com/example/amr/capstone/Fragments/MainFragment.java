@@ -32,8 +32,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment {
 
-    public static int index = -1;
-    public static int top = -1;
     RecyclerView recycler_view;
     RecyclerView.LayoutManager mLayoutManager;
     boolean landscapeMood = false;
@@ -140,24 +138,6 @@ public class MainFragment extends Fragment {
             if (resultCode == RESULT_OK) {
                 ((MainActivity) getActivity()).finish();
             }
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        //read current recyclerview position
-        index = mLayoutManager.getItemCount();
-        View v = recycler_view.getChildAt(0);
-        top = (v == null) ? 0 : (v.getTop() - recycler_view.getPaddingTop());
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //set recyclerview position
-        if (index != -1) {
-            mLayoutManager.scrollToPosition(index);
         }
     }
 }

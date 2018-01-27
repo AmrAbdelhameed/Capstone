@@ -34,13 +34,14 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
         String BooksType = sharedPreferences.getString("BooksType", "");
         setTitle(BooksType);
 
-        Intent sentIntent = getIntent();
-        Bundle sentBundle = sentIntent.getExtras();
-
-        MainFragment mMainFragment = new MainFragment();
-        mMainFragment.setNameListener(MainActivity.this);
-        mMainFragment.setArguments(sentBundle);
-        getSupportFragmentManager().beginTransaction().add(R.id.flMain, mMainFragment, "").commit();
+        if (savedInstanceState == null) {
+            Intent sentIntent = getIntent();
+            Bundle sentBundle = sentIntent.getExtras();
+            MainFragment mMainFragment = new MainFragment();
+            mMainFragment.setNameListener(MainActivity.this);
+            mMainFragment.setArguments(sentBundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.flMain, mMainFragment, "").commit();
+        }
         if (null != findViewById(R.id.flDetails)) {
             mIsTwoPane = true;
         }

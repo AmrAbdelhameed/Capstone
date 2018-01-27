@@ -20,14 +20,16 @@ public class DetailsActivity extends AppCompatActivity {
 
         FirebaseCrash.log(getString(R.string.activityCreated));
 
-        //Receive the sent Bundle
-        Intent sentIntent = getIntent();
-        Bundle sentBundle = sentIntent.getExtras();
+        if (savedInstanceState == null) {
+            //Receive the sent Bundle
+            Intent sentIntent = getIntent();
+            Bundle sentBundle = sentIntent.getExtras();
 
-        //Inflate Details Fragment & Send the Bundle to it
-        DetailsFragment mDetailsFragment = new DetailsFragment();
-        mDetailsFragment.setArguments(sentBundle);
-        getSupportFragmentManager().beginTransaction().add(R.id.flDetails, mDetailsFragment, "").commit();
+            //Inflate Details Fragment & Send the Bundle to it
+            DetailsFragment mDetailsFragment = new DetailsFragment();
+            mDetailsFragment.setArguments(sentBundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.flDetails, mDetailsFragment, "").commit();
+        }
     }
 
     @Override

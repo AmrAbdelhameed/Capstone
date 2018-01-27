@@ -25,9 +25,11 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
 
         FirebaseCrash.log(getString(R.string.activityCreated));
 
-        FavouriteFragment favouriteFragment = new FavouriteFragment();
-        favouriteFragment.setNameListener(this);
-        getSupportFragmentManager().beginTransaction().add(R.id.flMain2, favouriteFragment, "").commit();
+        if (savedInstanceState == null) {
+            FavouriteFragment favouriteFragment = new FavouriteFragment();
+            favouriteFragment.setNameListener(this);
+            getSupportFragmentManager().beginTransaction().replace(R.id.flMain2, favouriteFragment, "").commit();
+        }
         if (null != findViewById(R.id.flDetails2)) {
             mIsTwoPane = true;
         }
