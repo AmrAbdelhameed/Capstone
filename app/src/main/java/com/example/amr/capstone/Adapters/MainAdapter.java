@@ -50,7 +50,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return favourites.size();
+        if (favourites == null)
+            return 0;
+        else
+            return favourites.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

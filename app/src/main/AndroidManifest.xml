@@ -11,17 +11,17 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartActivity">
+        <activity android:name=".Activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".FavouriteActivity" />
-        <activity android:name=".SecondActivity" />
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.DetailsActivity" />
+        <activity android:name=".Activities.FavouriteActivity" />
+        <activity android:name=".Activities.SecondActivity" />
 
         <provider
             android:name=".DataBase.BookProvider"
@@ -31,7 +31,7 @@
             android:permission="com.example.amr.PROVIDER"
             android:process=":provider" />
 
-        <receiver android:name=".AppWidget">
+        <receiver android:name=".Widget.AppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -41,7 +41,7 @@
                 android:resource="@xml/app_widget_info" />
         </receiver>
 
-        <activity android:name=".AppWidgetConfigureActivity">
+        <activity android:name=".Widget.AppWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

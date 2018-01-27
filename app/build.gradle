@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        releaseConfig {
-            keyAlias 'releaseKey'
-            keyPassword 'password'
-            storeFile file('/home/amr/AndroidStudioProjects/release_keystore.jks')
-            storePassword 'password'
+        config {
+            keyAlias 'key0'
+            keyPassword '0226548701'
+            storeFile file('/home/amr/AndroidStudioProjects/YSolutionsApps/Capstone/app/appkeystore.jks')
+            storePassword '0226548701'
         }
     }
     compileSdkVersion 26
@@ -22,7 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.releaseConfig
+            signingConfig signingConfigs.config
         }
     }
 }

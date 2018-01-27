@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amr.capstone.StartActivity">
+    tools:context="com.example.amr.capstone.Activities.StartActivity">
 
     <TextView
         android:id="@+id/txtenter"
@@ -26,7 +26,7 @@
         android:layout_marginEnd="@dimen/_8dp"
         android:layout_marginStart="@dimen/_8dp"
         android:layout_marginTop="@dimen/_8dp"
-        android:hint="Enter Here"
+        android:hint="@string/enter_here"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/_16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginRight="@dimen/_8dp"
         android:layout_marginTop="@dimen/_8dp"
         android:background="@color/colorPrimary"
-        android:text="Save"
+        android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="@color/colorTexts"
         android:textSize="@dimen/_18sp"

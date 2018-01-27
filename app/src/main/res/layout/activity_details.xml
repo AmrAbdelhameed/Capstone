@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.amr.capstone.DetailsActivity">
+    tools:context="com.example.amr.capstone.Activities.DetailsActivity">
 
     <FrameLayout
         android:id="@+id/flDetails"

@@ -41,4 +41,8 @@
     <string name="pubOut">Publisher:</string>
     <string name="toolbar">Toolbar</string>
     <string name="plzwait">Loading. Please wait...</string>
+    <string name="save">Save</string>
+    <string name="enter_here">Enter Here</string>
+    <string name="typeFilter">books</string>
+    <string name="DefaultFilter">love</string>
 </resources>
