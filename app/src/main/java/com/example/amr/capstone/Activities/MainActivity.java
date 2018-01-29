@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.amr.capstone.Fragments.DetailsFragment;
 import com.example.amr.capstone.Fragments.MainFragment;
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements TabletMood {
 
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferencesName", Context.MODE_PRIVATE);
         String BooksType = sharedPreferences.getString("BooksType", "");
-        setTitle(BooksType);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(BooksType);
+        setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
             Intent sentIntent = getIntent();

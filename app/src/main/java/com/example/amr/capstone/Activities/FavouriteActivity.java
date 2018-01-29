@@ -1,8 +1,10 @@
 package com.example.amr.capstone.Activities;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.amr.capstone.Fragments.DetailsFragment;
 import com.example.amr.capstone.Fragments.FavouriteFragment;
@@ -18,10 +20,12 @@ public class FavouriteActivity extends AppCompatActivity implements TabletMoodFa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(getString(R.string.favBooks));
+        setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        setTitle(getString(R.string.favBooks));
 
         FirebaseCrash.log(getString(R.string.activityCreated));
 
